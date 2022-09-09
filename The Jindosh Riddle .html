@@ -94,6 +94,9 @@ På listen læser du de sidste 5 gæster der er nedskrevet: [[ går tilbage i te
 (set:$heirloomCC to false)
 (set:$heirloomMN to false)
 (set:$heirloomBF to false)
+(set:$readFaxmaskine to false)
+(set:$readpapir to false)
+(set:$talkAlf to false)
 
 (set:$timer to 0)
 
@@ -131,9 +134,76 @@ By: (if:$city is true)[Karnaca]
 Favorit drink: (if:$alcohol is true)[Whiskey]
 Arvestykke: (if:$heirloomBF is true)[Diamant]
 
-[[ Tilbage -&gt; så starter det ]] </tw-passagedata><tw-passagedata pid="18" name="Alfred" tags="" position="400,900" size="100,100">
-[[ Tilbage -&gt; så starter det ]] </tw-passagedata><tw-passagedata pid="19" name=" stue " tags="" position="700,900" size="100,100">Du kan se uret på væggen den viser der er gået $timer minuter
+[[ Tilbage -&gt; så starter det ]] </tw-passagedata><tw-passagedata pid="18" name="Alfred" tags="" position="400,900" size="100,100">(if:$talkAfl is true)[(set: $typewriterText to &quot;Har du ikke andre ting at tage dig til Hr&quot;)
+&lt;!-- Display (call) the Typewriter passage --&gt;
+{
+  &lt;!-- Create a variable to track the position within the $typewriterText string --&gt;
+  (set: $typewriterPos to 1)
 
+  &lt;!-- Create a hook to hold the typed text --&gt;
+  |typewriterOutput&gt;[]
+
+  &lt;!-- Set a delay of 50ms seconds per loop --&gt;
+  (live: 50ms)[
+
+    &lt;!-- Add the next character to the hook --&gt;
+    (append: ?typewriterOutput)[(print: $typewriterText&#39;s $typewriterPos)]
+
+    &lt;!-- Update the position --&gt;
+    (set: $typewriterPos to it + 1)
+
+    &lt;!-- If it&#39;s gone past the end, stop --&gt;
+    (if: $typewriterPos is $typewriterText&#39;s length + 1)[
+      (stop:)
+    ]
+  ]
+}
+](else:)[
+
+&lt;!-- Set the text to show --&gt;
+(set: $typewriterText to &quot;Alfred - I hyggede jer godt nok i går.
+
+Hr. Herlock - Det var en god aften, men jeg kan desværre ikke huske ret meget.
+
+Alfred - Jeg kan ikke sige meget om hvad der foregik, for jeg holdte mig i køkkenet, så jeg hørte ikke så meget.
+
+Hr.Herlock - Har du måske noget information om en af disse arvestykker der kan belyse situationen?
+
+Alfred - Doctor Marcolla’s farfar var general under krigen hvis jeg husker korrekt.&quot;)
+&lt;!-- Display (call) the Typewriter passage --&gt;
+{
+  &lt;!-- Create a variable to track the position within the $typewriterText string --&gt;
+  (set: $typewriterPos to 1)
+
+  &lt;!-- Create a hook to hold the typed text --&gt;
+  |typewriterOutput&gt;[]
+
+  &lt;!-- Set a delay of 50ms seconds per loop --&gt;
+  (live: 50ms)[
+
+    &lt;!-- Add the next character to the hook --&gt;
+    (append: ?typewriterOutput)[(print: $typewriterText&#39;s $typewriterPos)]
+
+    &lt;!-- Update the position --&gt;
+    (set: $typewriterPos to it + 1)
+
+    &lt;!-- If it&#39;s gone past the end, stop --&gt;
+    (if: $typewriterPos is $typewriterText&#39;s length + 1)[
+      (stop:)
+    ]
+  ]
+}
+]
+
+[[ Tilbage -&gt; så starter det ]] 
+(live:1s)[(set:$talkAfl to true)]
+(set:$heirloomDM to true)</tw-passagedata><tw-passagedata pid="19" name=" stue " tags="" position="700,900" size="100,100">Du kan se uret på væggen den viser der er gået(set:$timer to it +1) $timer minuter
+(if:$timer &gt;= 120)
+[
+	Du noget ikke at sende arvestykkerne til tiden
+    (link: &quot;Restart&quot;)[(reload:)]
+
+   ]   (else:)[
 I stuen er der alt som man plejer at havde en sofa, et sofa bord, en radio at høre nyhederne for at høre nyheder og en pejs til varme.
 Mens du kigger rundt i rummet ser du en ulæst [[avis]] på liggende bordet, fra en par dage siden.
 
@@ -146,6 +216,7 @@ Mens du kigger rundt i rummet ser du en ulæst [[avis]] på liggende bordet, fra
 [[ Gå på WC -&gt; WC1]]
 
 [[ Gå op af trappen og stil dig i gangen -&gt; trappe/gang]]
+]
 </tw-passagedata><tw-passagedata pid="20" name=" trappe/gang" tags="" position="500,1100" size="100,100">[[ Gå ind på dit kontor -&gt; kontor]]
 
 [[Gå på WC -&gt; WC2 ]]
@@ -158,18 +229,37 @@ Mens du kigger rundt i rummet ser du en ulæst [[avis]] på liggende bordet, fra
 [[ Gå ud til køkkenet -&gt; køkken]]
 
 [[ Gå tilbage til stuen -&gt; stue ]] 
-(set:$timer to it + 1)</tw-passagedata><tw-passagedata pid="22" name=" WC1" tags="" position="700,1100" size="100,100">Du tager en hurtig tis tår, før du går tilbage til arbejdet, tiden løber fra dig.
+(set:$timer to it + 100)</tw-passagedata><tw-passagedata pid="22" name=" WC1" tags="" position="700,1100" size="100,100">Du tager en hurtig tis tår, før du går tilbage til arbejdet, tiden løber fra dig.
 
 [[ Vask hænder og gå tilbage -&gt; stue ]] 
-(set:$timer to it + 15)</tw-passagedata><tw-passagedata pid="23" name=" kontor" tags="" position="300,1100" size="100,100">
+(set:$timer to it + 5)</tw-passagedata><tw-passagedata pid="23" name=" kontor" tags="" position="300,1100" size="100,100">På kontoret ser man ens skrive bord. På hjørnet af bordet er der en faxmaskine, en stakke af papier ved siden af. I midten står ens computer.
+(if:$readFaxmaskine is true)[  ]
+	(else:)[[[ Kig på faxmaskinen -&gt;faxmaskine]]]
+(if:$readpapir is true)[ ]
+	(else:)[ [[ Rud papirerne igennem -&gt; rudebunke papir]]]
+[[ Sit dig ved computeren -&gt; pc]]
+
+
 [[ Gå ud på gangen -&gt; trappe/gang]] 
 (set:$timer to it + 1)</tw-passagedata><tw-passagedata pid="24" name=" WC2 " tags="" position="300,1200" size="100,100">Du tager en hurtig tis tår, før du går tilbage til arbejdet, tiden løber fra dig.
 [[ Vask dine hænder og gå ud på gangen -&gt; trappe/gang]] 
-(set:$timer to it + 15)</tw-passagedata><tw-passagedata pid="25" name=" soveværelse " tags="" position="300,1300" size="100,100">[[ Gå ud på gangen -&gt; trappe/gang]] 
-(set:$timer to it + 1)</tw-passagedata><tw-passagedata pid="26" name=" køkken" tags="" position="1100,900" size="100,100">[[Åben døren til Madkammeret -&gt; madkammer]]
+(set:$timer to it + 5)</tw-passagedata><tw-passagedata pid="25" name=" soveværelse " tags="" position="300,1300" size="100,100">[[ Gå ud på gangen -&gt; trappe/gang]] 
+(set:$timer to it + 1)</tw-passagedata><tw-passagedata pid="26" name=" køkken" tags="" position="1100,900" size="100,100">Du står og kigger rundt i køkknet,
+Du føler dig lidt tørstig.
+Du åbner køleskabet for at drikke noget koldt vand.
+
+[[Åben døren til Madkammeret -&gt; madkammer]]
 
 [[Gå tilbage til Spisestue -&gt; SpiseStue ]] 
-(set:$timer to it + 1)</tw-passagedata><tw-passagedata pid="27" name=" madkammer" tags="" position="1100,1000" size="100,100">[[ Luk døren og gå tilbage til køknet -&gt; køkken]] 
+(set:$timer to it + 1)</tw-passagedata><tw-passagedata pid="27" name=" madkammer" tags="" position="1100,1000" size="100,100">Kammet er svagt belyst, men er der er præcis nok lys til at man kan se de fleste ting.
+du kigger det lille kammer igennem for at se om Alfreds liste med alkohol ligger der.
+
+Efter 5 minuter finder du en seddel under nogle falsker. 
+
+Fedt tænker du, nu ved du hvem der har bestilt hvilken alkohol.
+
+[[ Luk døren og gå tilbage til køknet -&gt; køkken]] 
+(set:$alcohol to true)
 (set:$timer to it + 5)</tw-passagedata><tw-passagedata pid="28" name=" Arvestykker" tags="" position="1000,600" size="100,100">Info om arvestykkerne
 En [[ Snusdåse -&gt;Snusdåse1]]
 En [[ Krigsmedajle -&gt;Krigsmedajle1]] 
@@ -211,6 +301,60 @@ M.N.
 [[Lig avisen fra dig-&gt; stue ]]
 (set:$timer to it + 2)
 
+</tw-passagedata><tw-passagedata pid="37" name=" pc" tags="" position="150,1100" size="100,100">Du åbner dit kamera overvågning system i håb om man kan se noget ved kameret i entréen.
+Du kan se liv hvad der er i entréen lige nu. 
+entréen er tom
+
+[[Spol tilbage -&gt;Overvogelse 1]]
+
+[[Tilbage -&gt; kontor]] </tw-passagedata><tw-passagedata pid="38" name="faxmaskine" tags="" position="150,900" size="100,100">Der ligger ikke nogen nye papir til dig
+(set:$readFaxmaskine to true)
+
+[[Tilbage -&gt; kontor]] 
+(set:$timer to it + 1)</tw-passagedata><tw-passagedata pid="39" name=" rudebunke papir" tags="" position="150,1000" size="100,100">Du blader igennem stakken af papirerne, indtil du i bunden af stakken finder en gammel fax som viser at du har købt en andendel i en tobaksfabrik som er eget af Lady Winslow.
+
+[[Tilbage -&gt; kontor]] 
+(set:$readpapir to true)
+(set:$heirloomLW to true)
+(set:$timer to it + 2)</tw-passagedata><tw-passagedata pid="40" name="Overvogelse 1" tags="" position="25,900" size="100,100">Du spoller tilbage til natten før.
+Du ser alle gæsterne tage hjem, billedet er ikke god nok kvalitet til man kan se alle detalijer, men man kan se alle de forskellige farver på gæsternes jakker.
+(set:$color to true)
+
+[[Spol frem -&gt; pc]] 
+(set:$timer to it + 1)
+[[Spol tilbage -&gt; Overvogelse 2]]</tw-passagedata><tw-passagedata pid="41" name=" Overvogelse 2" tags="" position="25,1000" size="100,100">Du ser Alfred pille busemænd.
+
+[[Spol frem -&gt;Overvogelse 1]] 
+(set:$timer to it + 1)
+[[Spol tilbage -&gt; Overvogelse 3]]</tw-passagedata><tw-passagedata pid="42" name=" Overvogelse 3" tags="" position="25,1100" size="100,100">Du har spolet tilbage til starten af feste. 
+Du holder øje med alle gæsterne der kommer, i det du kigger ser du noget der skinder rundt om halsen på en dame. på grund af billede kvaliteten kan man ikke se hendes andsigt, men man kan tydeligt se den lilla jakke.
+(set:$heirloomCC to true)
+(set:$timer to it + 1)
+[[Spol tilbage -&gt; Overvogelse 2]]</tw-passagedata><tw-passagedata pid="43" name="typewriter effekt tester" tags="" position="75,500" size="100,100">&lt;!-- Set the text to show --&gt;
+(set: $typewriterText to &quot;Hello, world!&quot;)
+&lt;!-- Display (call) the Typewriter passage --&gt;
+{
+  &lt;!-- Create a variable to track the position within the $typewriterText string --&gt;
+  (set: $typewriterPos to 1)
+
+  &lt;!-- Create a hook to hold the typed text --&gt;
+  |typewriterOutput&gt;[]
+
+  &lt;!-- Set a delay of 50ms seconds per loop --&gt;
+  (live: 50ms)[
+
+    &lt;!-- Add the next character to the hook --&gt;
+    (append: ?typewriterOutput)[(print: $typewriterText&#39;s $typewriterPos)]
+
+    &lt;!-- Update the position --&gt;
+    (set: $typewriterPos to it + 1)
+
+    &lt;!-- If it&#39;s gone past the end, stop --&gt;
+    (if: $typewriterPos is $typewriterText&#39;s length + 1)[
+      (stop:)
+    ]
+  ]
+}
 </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!

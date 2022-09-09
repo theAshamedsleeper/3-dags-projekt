@@ -31,15 +31,15 @@ En [[ GuldRing ]]
 En [[ Diamant ]] 
 
 Nu skal du bare finde ud af hvilke arvestykke der tilhøre hvem før gæsterne rejser hjem fra hotellet. Du håber de stadig er her til at modtage deres arvestykker igen.
-Du gætter cirka på at du har et par timer for de tager hjem. (Countdown starts)
+Du gætter på at du har et par timer før de tager hjem. (Countdown starts)
 
 [[ Bevæg dig til entrêen for at se gæstelisten -&gt; så starter det ]]
 </tw-passagedata><tw-passagedata pid="5" name=" Snusdåse " tags="" position="1300,300" size="100,100">Når man bare kigger på den er det en rund metal kontainer som indeholder løs tobak.
 &quot;Du kan ikke forstår hvorfor nogen vil vælge at bruge det&quot;
 
 [[ vend tilbage -&gt;Ryde op]] 
-</tw-passagedata><tw-passagedata pid="6" name=" Krigsmedajle " tags="" position="1300,400" size="100,100">Den ser gammel ud og og slidt ud, der er mange små ridser, som har den været igennem meget.
-&quot;Du synedes det er en skam den har så mange ridser&quot;
+</tw-passagedata><tw-passagedata pid="6" name=" Krigsmedajle " tags="" position="1300,400" size="100,100">Den ser gammel og og slidt ud, der er mange små ridser, som om den har været igennem meget.
+&quot;Du syntes det er en skam at den har så mange ridser&quot;
 
 [[ Vend Tilbage -&gt;Ryde op]] 
 </tw-passagedata><tw-passagedata pid="7" name=" halskæde " tags="" position="1300,500" size="100,100">Der er engreveret formen af en fugl 
@@ -48,13 +48,13 @@ Du gætter cirka på at du har et par timer for de tager hjem. (Countdown starts
 
 [[Inspicere ringen]]
 
-[[ Vend Tilbage -&gt;Ryde op]] </tw-passagedata><tw-passagedata pid="9" name="Inspicere ringen" tags="" position="1500,600" size="100,100">Du nær studere ringen, du drejer ringen om for at kunne se om der står noget inde i den. Til din overraskelse så står der en forkortelse i indesiden af ringen.
+[[ Vend Tilbage -&gt;Ryde op]] </tw-passagedata><tw-passagedata pid="9" name="Inspicere ringen" tags="" position="1500,600" size="100,100">Du nær studere ringen, du drejer ringen for at kunne se om der står noget inde i den. Til din overraskelse så står der en forkortelse i indesiden af ringen.
 M.N.
 &quot;Du Smiler til dig selv og tænker dejligt&quot;
 (set:$heriloomMN to true)
 
 
-[[Tilbage-&gt; GuldRing ]] </tw-passagedata><tw-passagedata pid="10" name=" Diamant " tags="" position="1300,700" size="100,100">Den er imporende stor i størrelse. Ikke noget en hvem som helst kan få fat i.
+[[Tilbage-&gt; GuldRing ]] </tw-passagedata><tw-passagedata pid="10" name=" Diamant " tags="" position="1300,700" size="100,100">Den er imporende stor i størrelse. Ikke noget hvem som helst kan få fat i.
 &quot;Du bliver lidt jaloux når du tænker over hvor dyr den må havde været &quot;
 
 [[ Vend Tilbage -&gt;Ryde op]] </tw-passagedata><tw-passagedata pid="11" name=" så starter det " tags="" position="700,700" size="100,100">Det er her i entreen man, som det første, ser huset indvendigt. Jakkerne hænger på væggen og skoene, der ligger på en måtte på gulvet. Der står en reol fyldt med ting.
@@ -134,7 +134,7 @@ By: (if:$city is true)[Karnaca]
 Favorit drink: (if:$alcohol is true)[Whiskey]
 Arvestykke: (if:$heirloomBF is true)[Diamant]
 
-[[ Tilbage -&gt; så starter det ]] </tw-passagedata><tw-passagedata pid="18" name="Alfred" tags="" position="400,900" size="100,100">(if:$talkAfl is true)[(set: $typewriterText to &quot;Har du ikke andre ting at tage dig til Hr&quot;)
+[[ Tilbage -&gt; så starter det ]] </tw-passagedata><tw-passagedata pid="18" name="Alfred" tags="" position="400,900" size="100,100">(if:$talkAfl is true)[(set: $typewriterText to &quot;Har du ikke andre ting at tage dig til Hr. Herlock&quot;)
 &lt;!-- Display (call) the Typewriter passage --&gt;
 {
   &lt;!-- Create a variable to track the position within the $typewriterText string --&gt;
@@ -200,12 +200,12 @@ Alfred - Doctor Marcolla’s farfar var general under krigen hvis jeg husker kor
 (set:$heirloomDM to true)</tw-passagedata><tw-passagedata pid="19" name=" stue " tags="" position="700,900" size="100,100">Du kan se uret på væggen den viser der er gået(set:$timer to it +1) $timer minuter
 (if:$timer &gt;= 120)
 [
-	Du noget ikke at sende arvestykkerne til tiden
+	Du nåede ikke at sende arvestykkerne til tiden
     (link: &quot;Restart&quot;)[(reload:)]
 
    ]   (else:)[
-I stuen er der alt som man plejer at havde en sofa, et sofa bord, en radio at høre nyhederne for at høre nyheder og en pejs til varme.
-Mens du kigger rundt i rummet ser du en ulæst [[avis]] på liggende bordet, fra en par dage siden.
+I stuen er der alt som man plejer at have; en sofa, et sofa bord, en radio til at høre nyhederne og en pejs til varme.
+Mens du kigger rundt i rummet ser du en ulæst [[avis]] liggende på bordet, fra et par dage siden.
 
 
 
@@ -224,7 +224,7 @@ Mens du kigger rundt i rummet ser du en ulæst [[avis]] på liggende bordet, fra
 [[ Gå i soveværelset -&gt; soveværelse ]]
 
 [[ Gå ned af trappen til stuen -&gt; stue ]] 
-(set:$timer to it + 2)</tw-passagedata><tw-passagedata pid="21" name=" SpiseStue " tags="" position="900,900" size="100,100">Det var her festen blev holdt, var en god aften.
+(set:$timer to it + 2)</tw-passagedata><tw-passagedata pid="21" name=" SpiseStue " tags="" position="900,900" size="100,100">Det var her festen blev holdt. Det var en god aften.
 
 [[ Gå ud til køkkenet -&gt; køkken]]
 
@@ -243,7 +243,9 @@ Mens du kigger rundt i rummet ser du en ulæst [[avis]] på liggende bordet, fra
 [[ Gå ud på gangen -&gt; trappe/gang]] 
 (set:$timer to it + 1)</tw-passagedata><tw-passagedata pid="24" name=" WC2 " tags="" position="300,1200" size="100,100">Du tager en hurtig tis tår, før du går tilbage til arbejdet, tiden løber fra dig.
 [[ Vask dine hænder og gå ud på gangen -&gt; trappe/gang]] 
-(set:$timer to it + 5)</tw-passagedata><tw-passagedata pid="25" name=" soveværelse " tags="" position="300,1300" size="100,100">[[ Gå ud på gangen -&gt; trappe/gang]] 
+(set:$timer to it + 5)</tw-passagedata><tw-passagedata pid="25" name=" soveværelse " tags="" position="300,1300" size="100,100">Det er ikke tid til at sove nu.
+
+[[ Gå ud på gangen -&gt; trappe/gang]] 
 (set:$timer to it + 1)</tw-passagedata><tw-passagedata pid="26" name=" køkken" tags="" position="1100,900" size="100,100">Du står og kigger rundt i køkknet,
 Du føler dig lidt tørstig.
 Du åbner køleskabet for at drikke noget koldt vand.
@@ -271,7 +273,7 @@ En [[ Diamant -&gt;Diamant1]]
 &quot;Du kan ikke forstår hvorfor nogen vil vælge at bruge det&quot;
 
 [[ vend tilbage -&gt; Arvestykker]] 
-</tw-passagedata><tw-passagedata pid="30" name="Krigsmedajle1" tags="" position="1700,400" size="100,100">Den ser gammel ud og og slidt ud, der er mange små ridser, som har den været igennem meget.
+</tw-passagedata><tw-passagedata pid="30" name="Krigsmedajle1" tags="" position="1700,400" size="100,100">Den ser gammel ud og og slidt ud, der er mange små ridser, som om den har været igennem meget.
 &quot;Du synes det er en skam den har så mange ridser og ikke er blevet vedligeholdt&quot;
 
 [[ vend tilbage -&gt; Arvestykker]] 
@@ -283,7 +285,7 @@ En [[ Diamant -&gt;Diamant1]]
 [[Inspicere ringen -&gt;lookAtRing]]
 
 [[ vend tilbage -&gt; Arvestykker]] 
-</tw-passagedata><tw-passagedata pid="33" name="Diamant1" tags="" position="1700,700" size="100,100">Den er imporende stor i størrelse. Ikke noget en hvem som helst kan få fat i.
+</tw-passagedata><tw-passagedata pid="33" name="Diamant1" tags="" position="1700,700" size="100,100">Den er imporende stor i størrelse. Ikke noget hvem som helst kan få fat i.
 &quot;Du bliver lidt jaloux når du tænker over hvor dyr den må havde været &quot;
 
 [[ vend tilbage -&gt; Arvestykker]] 
@@ -294,7 +296,7 @@ M.N.
 [[Tilbage-&gt;Guldring1]] </tw-passagedata><tw-passagedata pid="35" name="guestbook" tags="" position="900,700" size="100,100">Du bladere lidt i den, i håb om at der stod noget mere om de 5 gæster, men desvære stod der ikke mere end hvem de var og hvilken by de kom fra.
 &quot;Du ligger opgivende bogen fra dig&quot;
 (set:$city to true)
-[[Lig bogen fra dig -&gt; så starter det ]] </tw-passagedata><tw-passagedata pid="36" name="avis" tags="" position="900,1100" size="100,100">Du shuffler igennem avisen, indtil du finder noget der vækker interesse. Du læser en artikel omkring en Rig mand der afdøde og har efterladt sine rigdomme til hans Kone. Baroness Finch.
+[[Lig bogen fra dig -&gt; så starter det ]] </tw-passagedata><tw-passagedata pid="36" name="avis" tags="" position="900,1100" size="100,100">Du shuffler igennem avisen, indtil du finder noget der vækker interesse. Du læser en artikel omkring en rig mand der afdøde og har efterladt sine rigdomme til hans kone. Baroness Finch.
 
 (set:$heirloomBF to true)
 
@@ -302,16 +304,16 @@ M.N.
 (set:$timer to it + 2)
 
 </tw-passagedata><tw-passagedata pid="37" name=" pc" tags="" position="150,1100" size="100,100">Du åbner dit kamera overvågning system i håb om man kan se noget ved kameret i entréen.
-Du kan se liv hvad der er i entréen lige nu. 
+Du kan se live hvad der er i entréen lige nu. 
 entréen er tom
 
 [[Spol tilbage -&gt;Overvogelse 1]]
 
-[[Tilbage -&gt; kontor]] </tw-passagedata><tw-passagedata pid="38" name="faxmaskine" tags="" position="150,900" size="100,100">Der ligger ikke nogen nye papir til dig
+[[Tilbage -&gt; kontor]] </tw-passagedata><tw-passagedata pid="38" name="faxmaskine" tags="" position="150,900" size="100,100">Der ligger ikke nogle nye papir til dig
 (set:$readFaxmaskine to true)
 
 [[Tilbage -&gt; kontor]] 
-(set:$timer to it + 1)</tw-passagedata><tw-passagedata pid="39" name=" rudebunke papir" tags="" position="150,1000" size="100,100">Du blader igennem stakken af papirerne, indtil du i bunden af stakken finder en gammel fax som viser at du har købt en andendel i en tobaksfabrik som er eget af Lady Winslow.
+(set:$timer to it + 1)</tw-passagedata><tw-passagedata pid="39" name=" rudebunke papir" tags="" position="150,1000" size="100,100">Du blader igennem papirerne, indtil du i bunden af stakken finder en gammel fax som viser at du har købt en andendel i en tobaksfabrik som er eget af Lady Winslow.
 
 [[Tilbage -&gt; kontor]] 
 (set:$readpapir to true)
@@ -322,12 +324,12 @@ Du ser alle gæsterne tage hjem, billedet er ikke god nok kvalitet til man kan s
 
 [[Spol frem -&gt; pc]] 
 (set:$timer to it + 1)
-[[Spol tilbage -&gt; Overvogelse 2]]</tw-passagedata><tw-passagedata pid="41" name=" Overvogelse 2" tags="" position="25,1000" size="100,100">Du ser Alfred pille busemænd.
+[[Spol tilbage -&gt; Overvogelse 2]]</tw-passagedata><tw-passagedata pid="41" name=" Overvogelse 2" tags="" position="25,1000" size="100,100">Du ser Alfred pille busemænd fra sine næse.
 
 [[Spol frem -&gt;Overvogelse 1]] 
 (set:$timer to it + 1)
 [[Spol tilbage -&gt; Overvogelse 3]]</tw-passagedata><tw-passagedata pid="42" name=" Overvogelse 3" tags="" position="25,1100" size="100,100">Du har spolet tilbage til starten af feste. 
-Du holder øje med alle gæsterne der kommer, i det du kigger ser du noget der skinder rundt om halsen på en dame. på grund af billede kvaliteten kan man ikke se hendes andsigt, men man kan tydeligt se den lilla jakke.
+Du holder øje med alle gæsterne der kommer, i det du kigger ser du noget der skinder rundt om halsen på en af damerne. På grund af billede kvaliteten kan man ikke se hendes andsigt, men man kan tydeligt se den lilla jakke.
 (set:$heirloomCC to true)
 (set:$timer to it + 1)
 [[Spol tilbage -&gt; Overvogelse 2]]</tw-passagedata><tw-passagedata pid="43" name="typewriter effekt tester" tags="" position="75,500" size="100,100">&lt;!-- Set the text to show --&gt;
